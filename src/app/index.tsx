@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 import { supabase } from '../../lib/supabase';
@@ -32,6 +33,12 @@ export default function HomeScreen() {
 
   return (
   <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 60 }}>
+    <Link href="/onboarding" style={{ color: 'blue', fontSize: 18, padding: 16 }}>
+      Set up my plan →
+    </Link>
+    <Link href={'/plan' as any} style={{ color: 'blue', fontSize: 18, padding: 16 }}>
+      View my plan →
+    </Link>
     <Text style={{ color: 'black', fontSize: 22, padding: 16 }}>
       Exercises loaded: {exercises.length}
     </Text>
