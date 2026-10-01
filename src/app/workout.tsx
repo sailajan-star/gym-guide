@@ -9,7 +9,7 @@ import { supabase } from '../../lib/supabase';
 
 type Detail = { name: string; instructions: string; cues: string };
 type LoggedSet = { exercise: string; set: number; weight: string; reps: string };
-type Clip = { exercise_name: string; angle: string; url: string }; // CLIPS (2 of 3)
+
 
 const inputStyle = {
   color: palette.text,
@@ -38,7 +38,6 @@ export default function WorkoutScreen() {
 
   const [plannedDay, setPlannedDay] = useState<PlannedDay | null>(null);
   const [details, setDetails] = useState<Record<string, Detail>>({});
-  const [clips, setClips] = useState<Record<string, Clip[]>>({}); // CLIPS (3 of 3, with the block in load())
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -79,20 +78,6 @@ export default function WorkoutScreen() {
         (data ?? []).forEach((d) => (lookup[d.name] = d));
         setDetails(lookup);
         setPlannedDay(chosen);
-
-        // CLIPS block start
-        const { data: clipData } = await supabase
-          .from('exercise_clips')
-          .select('exercise_name, angle, url, sort_order')
-          .in('exercise_name', names)
-          .order('sort_order');
-        const grouped: Record<string, Clip[]> = {};
-        (clipData ?? []).forEach((c) => {
-          if (!grouped[c.exercise_name]) grouped[c.exercise_name] = [];
-          grouped[c.exercise_name].push(c);
-        });
-        setClips(grouped);
-        // CLIPS block end
       }
       setLoading(false);
     }

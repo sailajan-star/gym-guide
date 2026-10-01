@@ -307,6 +307,12 @@ export default function HomeScreen() {
         </View>
       </View>
 
+      <Pressable onPress={() => router.push('/history' as any)} style={{ padding: 8 }}>
+        <Text style={{ color: palette.accent, fontSize: 16, fontWeight: '600', textAlign: 'center' }}>
+          View my history →
+        </Text>
+      </Pressable>
+
       <Pressable onPress={() => router.push('/plan' as any)} style={{ padding: 8 }}>
         <Text style={{ color: palette.accent, fontSize: 16, fontWeight: '600', textAlign: 'center' }}>
           See my full plan →

@@ -36,6 +36,7 @@ export default function RootLayout() {
         <Stack.Screen name="onboarding" options={{ title: 'Set up', headerBackTitle: 'Back' }} />
         <Stack.Screen name="plan" options={{ title: 'Your plan', headerBackTitle: 'Back' }} />
         <Stack.Screen name="workout" options={{ title: 'Workout' }} />
+        <Stack.Screen name="history" options={{ title: 'History', headerBackTitle: 'Back' }} />
         <Stack.Screen name="explore" options={{ title: 'Explore' }} />
       </Stack>
     </ThemeProvider>
