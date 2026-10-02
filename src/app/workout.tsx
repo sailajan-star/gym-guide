@@ -3,7 +3,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 
-import { palette } from '@/constants/palette';
+import { labelStyle, useTheme } from '@/constants/app-theme';
 import { buildWeek, PlannedDay, SETS_BY_WEEK } from '../../lib/program';
 import { supabase } from '../../lib/supabase';
 
@@ -11,6 +11,9 @@ type Detail = { name: string; instructions: string; cues: string };
 type LoggedSet = { exercise: string; set: number; weight: string; reps: string };
 
 
+export default function WorkoutScreen() {
+const { palette, mode } = useTheme();
+const label = labelStyle(palette);
 const inputStyle = {
   color: palette.text,
   backgroundColor: palette.surface,
@@ -21,16 +24,6 @@ const inputStyle = {
   fontSize: 20,
   marginBottom: 14,
 } as const;
-
-const label = {
-  color: palette.muted,
-  fontSize: 12,
-  fontWeight: '700',
-  letterSpacing: 1.5,
-  marginBottom: 6,
-} as const;
-
-export default function WorkoutScreen() {
   const router = useRouter();
   const { week, day } = useLocalSearchParams<{ week: string; day: string }>();
   const weekIndex = parseInt(week ?? '0', 10);
@@ -241,7 +234,7 @@ export default function WorkoutScreen() {
               height: 8,
               borderRadius: 4,
               marginRight: i < totalSets - 1 ? 6 : 0,
-              backgroundColor: i < setsDone ? palette.accent : i === setsDone ? '#2E8F69' : palette.border,
+              backgroundColor: i < setsDone ? palette.accent : i === setsDone ? '#ffffff' : palette.border,
             }}
           />
         ))}
@@ -280,8 +273,7 @@ export default function WorkoutScreen() {
         style={inputStyle}
       />
 
-      <Text style={label}>REPS COMPLETED</Text>
-      <TextInput
+        <Text style={label}>{exercise.name === 'Plank' ? 'SECONDS HELD' : 'REPS COMPLETED'}</Text>      <TextInput
         value={reps}
         onChangeText={setReps}
         keyboardType="number-pad"

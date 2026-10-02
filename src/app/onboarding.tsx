@@ -3,7 +3,7 @@ import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
-import { palette } from '@/constants/palette';
+import { useTheme } from '@/constants/app-theme';
 
 const QUESTIONS = [
   { key: 'goal', title: "What's your main goal?", options: ['Build muscle', 'Lose fat', 'Get stronger', 'Just get healthier'] },
@@ -13,6 +13,7 @@ const QUESTIONS = [
 ];
 
 export default function Onboarding() {
+  const { palette } = useTheme();
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});

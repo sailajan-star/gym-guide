@@ -3,10 +3,11 @@ import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
-import { palette } from '@/constants/palette';
+import { useTheme } from '@/constants/app-theme';
 import { buildWeek, PlannedDay, PlannedExercise, SETS_BY_WEEK, WEEK_NOTES } from '../../lib/program';
 
 export default function PlanScreen() {
+  const { palette } = useTheme();
   const router = useRouter();
   const [profile, setProfile] = useState<Record<string, string> | null>(null);
   const [loaded, setLoaded] = useState(false);

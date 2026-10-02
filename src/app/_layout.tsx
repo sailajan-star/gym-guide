@@ -1,28 +1,30 @@
-import { DarkTheme, Stack, ThemeProvider } from 'expo-router';
+import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import { palette } from '@/constants/palette';
+import { AppThemeProvider, useTheme } from '@/constants/app-theme';
 
 SplashScreen.preventAutoHideAsync();
 
-const theme = {
-  ...DarkTheme,
-  colors: {
-    ...DarkTheme.colors,
-    background: palette.background,
-    card: palette.background,
-    text: palette.text,
-    border: palette.border,
-    primary: palette.accent,
-  },
-};
+function ThemedStack() {
+  const { mode, palette } = useTheme();
+  const base = mode === 'dark' ? DarkTheme : DefaultTheme;
+  const navTheme = {
+    ...base,
+    colors: {
+      ...base.colors,
+      background: palette.background,
+      card: palette.background,
+      text: palette.text,
+      border: palette.border,
+      primary: palette.accent,
+    },
+  };
 
-export default function RootLayout() {
   return (
-    <ThemeProvider value={theme}>
-      <StatusBar style="light" />
+    <ThemeProvider value={navTheme}>
+      <StatusBar style={mode === 'dark' ? 'light' : 'dark'} />
       <AnimatedSplashOverlay />
       <Stack
         screenOptions={{
@@ -35,10 +37,21 @@ export default function RootLayout() {
         <Stack.Screen name="index" options={{ title: 'Home', headerShown: false }} />
         <Stack.Screen name="onboarding" options={{ title: 'Set up', headerBackTitle: 'Back' }} />
         <Stack.Screen name="plan" options={{ title: 'Your plan', headerBackTitle: 'Back' }} />
-        <Stack.Screen name="workout" options={{ title: 'Workout' }} />
+        <Stack.Screen name="workout" options={{ title: 'Workout', headerBackTitle: 'Back' }} />
         <Stack.Screen name="history" options={{ title: 'History', headerBackTitle: 'Back' }} />
+        <Stack.Screen name="coach" options={{ title: 'Coach', headerBackTitle: 'Back' }} />
         <Stack.Screen name="explore" options={{ title: 'Explore' }} />
+        <Stack.Screen name="progress" options={{ title: 'Progress', headerBackTitle: 'Back' }} />
+        <Stack.Screen name="exercise" options={{ title: 'Exercise', headerBackTitle: 'Back' }} />
       </Stack>
     </ThemeProvider>
+  );
+}
+
+export default function RootLayout() {
+  return (
+    <AppThemeProvider>
+      <ThemedStack />
+    </AppThemeProvider>
   );
 }

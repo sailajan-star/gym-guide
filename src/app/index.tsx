@@ -1,28 +1,34 @@
+import ThemeToggle from '@/components/ThemeToggle';
+import { labelStyle, useTheme } from '@/constants/app-theme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-
-import { palette } from '@/constants/palette';
 import { buildWeek, WEEK_NOTES } from '../../lib/program';
 
-function greeting() {
+function timeOfDay() {
   const hour = new Date().getHours();
-  if (hour < 12) return 'Good morning';
-  if (hour < 18) return 'Good afternoon';
-  return 'Good evening';
+  if (hour < 12) return 'morning';
+  if (hour < 18) return 'afternoon';
+  return 'evening';
 }
 
-const label = {
-  color: palette.muted,
-  fontSize: 12,
-  fontWeight: '700',
-  letterSpacing: 1.5,
-} as const;
+function Greeting() {
+  const { palette } = useTheme();
+  const label = labelStyle(palette);
+  return (
+    <Text style={label}>
+      <Text style={{ color: palette.text }}>GOOD </Text>
+      <Text style={{ color: palette.accent }}>{timeOfDay().toUpperCase()}</Text>
+    </Text>
+  );
+}
 
 export default function HomeScreen() {
+  const { palette } = useTheme();
+  const label = labelStyle(palette);
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const [profile, setProfile] = useState<Record<string, string> | null>(null);
@@ -50,15 +56,21 @@ export default function HomeScreen() {
   if (!profile) {
     return (
       <ScrollView style={{ flex: 1, backgroundColor: palette.background }} contentContainerStyle={containerStyle}>
-        <Text style={label}>{greeting().toUpperCase()}</Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Greeting />
+          <ThemeToggle />
+        </View>
         <Text style={{ color: palette.text, fontSize: 36, fontWeight: '800', marginTop: 6, marginBottom: 28 }}>
           Let's get you started.
         </Text>
         <LinearGradient
-          colors={['#1E6B50', '#0F2A22', '#0B0D10']}
+          //colors={['#1E6B50', '#0F2A22', '#0B0D10']}
+          colors={['#6b1e1e', '#2a0f0f', '#0B0D10']}
+
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
-          style={{ borderRadius: 28, padding: 24, borderWidth: 1, borderColor: '#1F5E48' }}
+          //style={{ borderRadius: 28, padding: 24, borderWidth: 1, borderColor: '#1F5E48' }}
+          style={{ borderRadius: 28, padding: 24, borderWidth: 1, borderColor: '#5e1f1f' }}
         >
           <Text style={{ color: palette.text, fontSize: 24, fontWeight: '800', marginBottom: 8 }}>
             Build your plan
@@ -89,7 +101,10 @@ export default function HomeScreen() {
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: palette.background }} contentContainerStyle={containerStyle}>
-      <Text style={label}>{greeting().toUpperCase()}</Text>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Greeting />
+        <ThemeToggle />
+      </View>
       <Text style={{ color: palette.text, fontSize: 36, fontWeight: '800', marginTop: 6 }}>
         Ready to train?
       </Text>
@@ -100,10 +115,11 @@ export default function HomeScreen() {
       {/* HERO: up next */}
       {workout ? (
         <LinearGradient
-          colors={['#1E6B50', '#0F2A22', '#0B0D10']}
+          //colors={['#1E6B50', '#0F2A22', '#0B0D10']}
+          colors={['#6b1e1e', '#2a0f0f', '#0B0D10']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
-          style={{ borderRadius: 28, padding: 24, marginBottom: 16, borderWidth: 1, borderColor: '#1F5E48' }}
+          style={{ borderRadius: 28, padding: 24, marginBottom: 16, borderWidth: 1, borderColor: '#5e1f1f' }}
         >
           <Text style={{ ...label, color: palette.accent }}>UP NEXT · WEEK {weekIdx + 1} OF 4</Text>
           <Text style={{ color: palette.text, fontSize: 28, fontWeight: '800', marginTop: 8 }}>
@@ -246,6 +262,7 @@ export default function HomeScreen() {
       </View>
 
       {/* COACH: chat-bubble shape */}
+      <Pressable onPress={() => router.push('/coach' as any)}>
       <View
         style={{
           backgroundColor: palette.surfaceAlt,
@@ -273,8 +290,8 @@ export default function HomeScreen() {
           >
             <Text style={{ color: palette.accent, fontSize: 16 }}>✦</Text>
           </View>
-          <Text style={{ color: palette.text, fontSize: 17, fontWeight: '700', flex: 1 }}>Your coach</Text>
-          <Text style={{ ...label, color: palette.accent }}>COMING SOON</Text>
+          <Text style={{ color: palette.text, fontSize: 17, fontWeight: '700', flex: 1 }}>Personal Coach</Text>
+          <Text style={{ ...label, color: palette.accent }}>ASK ME</Text>
         </View>
         <Text style={{ color: palette.muted, lineHeight: 22, marginBottom: 14 }}>
           Questions about form, swaps, or soreness? Ask anytime.
@@ -291,7 +308,7 @@ export default function HomeScreen() {
             borderColor: palette.border,
           }}
         >
-          <Text style={{ color: palette.muted, flex: 1 }}>Ask about form, swaps, soreness…</Text>
+          <Text style={{ color: palette.muted, flex: 1 }}>Type here...</Text>
           <View
             style={{
               width: 28,
@@ -306,7 +323,15 @@ export default function HomeScreen() {
           </View>
         </View>
       </View>
+      </Pressable>
 
+
+      <Pressable onPress={() => router.push('/progress' as any)} style={{ padding: 8 }}>
+        <Text style={{ color: palette.accent, fontSize: 16, fontWeight: '600', textAlign: 'center' }}>
+          View my progress →
+        </Text>
+      </Pressable>
+      
       <Pressable onPress={() => router.push('/history' as any)} style={{ padding: 8 }}>
         <Text style={{ color: palette.accent, fontSize: 16, fontWeight: '600', textAlign: 'center' }}>
           View my history →

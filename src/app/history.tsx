@@ -3,17 +3,10 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
-import { palette } from '@/constants/palette';
-
+import { labelStyle, useTheme } from '@/constants/app-theme';
 type LoggedSet = { exercise: string; set: number; weight: string; reps: string };
 type WorkoutLog = { date: string; week: number; workout: string; sets: LoggedSet[] };
 
-const label = {
-  color: palette.muted,
-  fontSize: 12,
-  fontWeight: '700',
-  letterSpacing: 1.5,
-} as const;
 
 function groupByExercise(sets: LoggedSet[]) {
   const groups: Record<string, LoggedSet[]> = {};
@@ -25,6 +18,8 @@ function groupByExercise(sets: LoggedSet[]) {
 }
 
 export default function HistoryScreen() {
+    const { palette } = useTheme();
+    const label = labelStyle(palette);
   const router = useRouter();
   const [logs, setLogs] = useState<WorkoutLog[]>([]);
   const [loaded, setLoaded] = useState(false);
@@ -48,7 +43,7 @@ export default function HistoryScreen() {
       style={{ flex: 1, backgroundColor: palette.background }}
       contentContainerStyle={{ padding: 24, paddingBottom: 56 }}
     >
-      <Text style={{ color: palette.text, fontSize: 32, fontWeight: '800', marginBottom: 20 }}>Your progress</Text>
+      <Text style={{ color: palette.text, fontSize: 32, fontWeight: '800', marginBottom: 20 }}>My Progress</Text>
 
       {/* Summary tiles */}
       <View style={{ flexDirection: 'row', marginBottom: 24 }}>
