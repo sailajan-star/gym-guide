@@ -242,7 +242,7 @@ export default function CoachScreen() {
         <TextInput
           value={input}
           onChangeText={setInput}
-          placeholder="TIype here..."
+          placeholder="Type here..."
           placeholderTextColor={palette.muted}
           keyboardAppearance="dark"
           maxLength={500}

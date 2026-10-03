@@ -73,8 +73,8 @@ export default function ProgressScreen() {
       style={{ flex: 1, backgroundColor: palette.background }}
       contentContainerStyle={{ padding: 24, paddingBottom: 56 }}
     >
-      <Text style={{ color: palette.text, fontSize: 32, fontWeight: '800', marginBottom: 4 }}>Progress</Text>
-      <Text style={{ color: palette.muted, marginBottom: 20 }}>Tap an exercise to see how you're improving.</Text>
+      <Text style={{ color: palette.text, fontSize: 32, fontWeight: '800', marginBottom: 4 }}>My Progress</Text>
+      <Text style={{ color: palette.muted, marginBottom: 20 }}>Tap an exercise to see how you're improving!</Text>
 
       {/* Muscle group filter */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 16, flexGrow: 0 }}>

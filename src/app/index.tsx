@@ -116,13 +116,13 @@ export default function HomeScreen() {
       {workout ? (
         <LinearGradient
           //colors={['#1E6B50', '#0F2A22', '#0B0D10']}
-          colors={['#6b1e1e', '#2a0f0f', '#0B0D10']}
+          colors={['#6b1e1e', '#2a0f0f', '#0b0d10']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
-          style={{ borderRadius: 28, padding: 24, marginBottom: 16, borderWidth: 1, borderColor: '#5e1f1f' }}
+          style={{ borderRadius: 28, padding: 24, marginBottom: 16 }}
         >
           <Text style={{ ...label, color: palette.accent }}>UP NEXT · WEEK {weekIdx + 1} OF 4</Text>
-          <Text style={{ color: palette.text, fontSize: 28, fontWeight: '800', marginTop: 8 }}>
+          <Text style={{ color: palette.cardText, fontSize: 28, fontWeight: '800', marginTop: 8 }}>
             {workout.label}
           </Text>
           <Text style={{ color: palette.muted, marginTop: 4, marginBottom: 16 }}>
@@ -143,7 +143,7 @@ export default function HomeScreen() {
               <Text style={{ color: palette.accent, fontWeight: '800', width: 34 }}>
                 {String(i + 1).padStart(2, '0')}
               </Text>
-              <Text style={{ color: palette.text, fontSize: 16, flex: 1 }}>{ex.name}</Text>
+              <Text style={{ color: palette.cardText, fontSize: 16, flex: 1 }}>{ex.name}</Text>
               <Text style={{ color: palette.muted }}>{ex.reps}</Text>
             </View>
           ))}
@@ -172,6 +172,7 @@ export default function HomeScreen() {
           </Pressable>
         </LinearGradient>
       ) : (
+
         <View
           style={{
             backgroundColor: palette.surface,
@@ -180,6 +181,7 @@ export default function HomeScreen() {
             marginBottom: 16,
             borderWidth: 1,
             borderColor: palette.border,
+            
           }}
         >
           <Text style={{ color: palette.text, fontSize: 24, fontWeight: '800', marginBottom: 6 }}>
@@ -200,8 +202,10 @@ export default function HomeScreen() {
             borderRadius: 22,
             padding: 18,
             marginRight: 8,
-            borderWidth: 1,
-            borderColor: palette.border,
+            shadowColor: palette.shadowCol,
+            shadowOpacity: 0.45,
+            shadowRadius: 16,
+            shadowOffset: { width: 0, height: 4 },
           }}
         >
           <Text style={{ color: palette.text, fontSize: 40, fontWeight: '800' }}>{completed}</Text>
@@ -214,8 +218,10 @@ export default function HomeScreen() {
             borderRadius: 22,
             padding: 18,
             marginLeft: 8,
-            borderWidth: 1,
-            borderColor: palette.border,
+            shadowColor: palette.shadowCol,
+            shadowOpacity: 0.45,
+            shadowRadius: 16,
+            shadowOffset: { width: 0, height: 4 },
           }}
         >
           <Text style={{ color: palette.text, fontSize: 40, fontWeight: '800' }}>
@@ -233,8 +239,10 @@ export default function HomeScreen() {
           borderRadius: 24,
           padding: 20,
           marginBottom: 16,
-          borderWidth: 1,
-          borderColor: palette.border,
+          shadowColor: palette.shadowCol,
+          shadowOpacity: 0.45,
+          shadowRadius: 16,
+          shadowOffset: { width: 0, height: 4 },
         }}
       >
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 14 }}>
@@ -262,76 +270,93 @@ export default function HomeScreen() {
       </View>
 
       {/* COACH: chat-bubble shape */}
-      <Pressable onPress={() => router.push('/coach' as any)}>
-      <View
-        style={{
-          backgroundColor: palette.surfaceAlt,
-          borderTopLeftRadius: 6,
-          borderTopRightRadius: 26,
-          borderBottomLeftRadius: 26,
-          borderBottomRightRadius: 26,
-          padding: 20,
-          marginBottom: 20,
-          borderWidth: 1,
-          borderColor: palette.border,
-        }}
-      >
-        <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
-          <View
-            style={{
-              width: 34,
-              height: 34,
-              borderRadius: 17,
-              backgroundColor: palette.accentSoft,
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginRight: 10,
-            }}
-          >
-            <Text style={{ color: palette.accent, fontSize: 16 }}>✦</Text>
-          </View>
-          <Text style={{ color: palette.text, fontSize: 17, fontWeight: '700', flex: 1 }}>Personal Coach</Text>
-          <Text style={{ ...label, color: palette.accent }}>ASK ME</Text>
-        </View>
-        <Text style={{ color: palette.muted, lineHeight: 22, marginBottom: 14 }}>
-          Questions about form, swaps, or soreness? Ask anytime.
-        </Text>
+      <LinearGradient
+          colors={['#130707', '#842727', '#571414','#f85959','#390d0d']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={{ borderRadius: 28, padding: 24, marginBottom: 16 }}
+        >
+        <Pressable onPress={() => router.push('/coach' as any)}>
         <View
           style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            backgroundColor: palette.background,
-            borderRadius: 22,
-            paddingVertical: 10,
-            paddingHorizontal: 16,
-            borderWidth: 1,
-            borderColor: palette.border,
+            //backgroundColor: palette.surfaceAlt,
+            borderTopLeftRadius: 25,
+            borderTopRightRadius: 25,
+            borderBottomLeftRadius: 25,
+            borderBottomRightRadius: 25,
+            //padding: 20,
+            marginBottom: 20,
+            shadowColor: palette.shadowCol,
+            shadowOpacity: 0.45,
+            shadowRadius: 16,
+            shadowOffset: { width: 0, height: 4 },
           }}
         >
-          <Text style={{ color: palette.muted, flex: 1 }}>Type here...</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+            <View
+              style={{
+                width: 34,
+                height: 34,
+                borderRadius: 17,
+                backgroundColor: palette.accentSoft,
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginRight: 10,
+              }}
+            >
+              <Text style={{ color: palette.accent, fontSize: 16 }}>✦</Text>
+            </View>
+            <Text style={{ color: palette.cardText, fontSize: 17, fontWeight: '700', flex: 1 }}>Personal Coach</Text>
+            <Text style={{ ...label, color: palette.cardText }}>ASK ME</Text>
+          </View>
+          <Text style={{ color: palette.muted, lineHeight: 22, marginBottom: 14 }}>
+            Questions about form, swaps, or soreness? Ask anytime.
+          </Text>
           <View
             style={{
-              width: 28,
-              height: 28,
-              borderRadius: 14,
-              backgroundColor: palette.accent,
+              flexDirection: 'row',
               alignItems: 'center',
-              justifyContent: 'center',
+              backgroundColor: palette.background,
+              borderRadius: 22,
+              paddingVertical: 10,
+              paddingHorizontal: 16,
+              shadowColor: palette.shadowCol,
+              shadowOpacity: 0.45,
+              shadowRadius: 5,
+              shadowOffset: { width: 0, height: 4 },
             }}
           >
-            <Text style={{ color: palette.accentText, fontWeight: '800' }}>↑</Text>
+            <Text style={{ color: palette.muted, flex: 1 }}>Type here...</Text>
+            <View
+              style={{
+                width: 28,
+                height: 28,
+                borderRadius: 14,
+                backgroundColor: palette.accent,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Text style={{ color: palette.accentText, fontWeight: '800' }}>↑</Text>
+            </View>
           </View>
         </View>
-      </View>
+        </Pressable>
+      </LinearGradient>
+
+
+      <Pressable onPress={() => router.push('/build-plan' as any)} style={{ padding: 8 }}>
+        <Text style={{ color: palette.accent, fontSize: 16, fontWeight: '600', textAlign: 'center' }}>
+          Build my own plan →
+        </Text>
       </Pressable>
-
-
+      
       <Pressable onPress={() => router.push('/progress' as any)} style={{ padding: 8 }}>
         <Text style={{ color: palette.accent, fontSize: 16, fontWeight: '600', textAlign: 'center' }}>
           View my progress →
         </Text>
       </Pressable>
-      
+
       <Pressable onPress={() => router.push('/history' as any)} style={{ padding: 8 }}>
         <Text style={{ color: palette.accent, fontSize: 16, fontWeight: '600', textAlign: 'center' }}>
           View my history →

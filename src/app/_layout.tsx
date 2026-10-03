@@ -43,6 +43,7 @@ function ThemedStack() {
         <Stack.Screen name="explore" options={{ title: 'Explore' }} />
         <Stack.Screen name="progress" options={{ title: 'Progress', headerBackTitle: 'Back' }} />
         <Stack.Screen name="exercise" options={{ title: 'Exercise', headerBackTitle: 'Back' }} />
+        <Stack.Screen name="build-plan" options={{ title: 'Build your plan', headerBackTitle: 'Back' }} />
       </Stack>
     </ThemeProvider>
   );

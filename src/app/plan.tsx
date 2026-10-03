@@ -83,7 +83,7 @@ export default function PlanScreen() {
           padding: 18,
           marginBottom: 20,
           borderWidth: 1,
-          borderColor: '#1F5E48',
+          borderColor: '#5e1f1f',
         }}
       >
         <Text style={{ color: palette.accent, fontSize: 12, fontWeight: '700', letterSpacing: 1.5, marginBottom: 6 }}>

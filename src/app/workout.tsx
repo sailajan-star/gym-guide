@@ -262,7 +262,8 @@ const inputStyle = {
         </View>
       ) : null}
 
-      <Text style={label}>WEIGHT (KG), OR 0 FOR BODYWEIGHT</Text>
+      <Text style={{ ...label, marginBottom: 10 }}>WEIGHT (KG), OR 0 FOR BODYWEIGHT</Text>
+
       <TextInput
         value={weight}
         onChangeText={setWeight}
@@ -273,7 +274,8 @@ const inputStyle = {
         style={inputStyle}
       />
 
-        <Text style={label}>{exercise.name === 'Plank' ? 'SECONDS HELD' : 'REPS COMPLETED'}</Text>      <TextInput
+      <Text style={{ ...label, marginBottom : 10}}>{exercise.name === 'Plank' ? 'SECONDS HELD' : 'REPS COMPLETED'}</Text>      
+      <TextInput
         value={reps}
         onChangeText={setReps}
         keyboardType="number-pad"
