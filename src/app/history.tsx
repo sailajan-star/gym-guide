@@ -94,7 +94,7 @@ export default function HistoryScreen() {
             Finish your first workout and it will show up here.
           </Text>
           <Pressable
-            onPress={() => router.replace('/')}
+            onPress={() => router.dismissTo('/')}
             style={{ backgroundColor: palette.accent, padding: 14, borderRadius: 14 }}
           >
             <Text style={{ color: palette.accentText, textAlign: 'center', fontWeight: '800', fontSize: 16 }}>
@@ -121,7 +121,7 @@ export default function HistoryScreen() {
                 day: 'numeric',
                 month: 'short',
               }).toUpperCase()}{' '}
-              · WEEK {log.week}
+              {log.week > 0 ? `· WEEK ${log.week}` : ''}
             </Text>
             <Text style={{ color: palette.text, fontSize: 20, fontWeight: '800', marginTop: 6, marginBottom: 12 }}>
               {log.workout}

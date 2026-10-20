@@ -1,0 +1,73 @@
+Done so far
+Quiz, saved 4-week guided plan, custom plans and exercises, 60-exercise library, set logging, progress charts, history, coach (explain-only), tab bar, themes.
+
+Phase 1: Finish the plan (in progress)
+
+Test the new plan builder and quiz
+Block-end review and next block (M)
+
+Phase 2: Workout experience
+
+Rest timer with skip and extend (S)
+Edit or undo logged sets, plus notes (S)
+Recover an interrupted workout (S)
+Progression suggestions, e.g. “try 22.5kg” (M)
+Swap an exercise mid-workout (M)
+
+Phase 3: Exercise data and visuals
+
+Add primary and secondary muscles, common mistakes, breathing, and alternatives to the exercise table (M, mostly writing data)
+Richer exercise screen (S)
+Your clips, whenever they’re ready
+
+Phase 4: Muscle map (needs Phase 3)
+
+Body diagram on each exercise screen (S)
+Post-workout reveal animation (M)
+Weekly muscle map on Home or Progress (M)
+Tap a muscle for last trained and related exercises (S)
+
+Phase 5: Coach upgrades
+
+Tool calling for swap, shorten, and ease off, with a confirm card (L)
+Coach reads your real progress and history (M)
+
+Phase 6: Profile and body tracker
+
+Age, height, weight, and kg/lb units (S)
+Body weight log with a smoothed trend chart (M)
+
+Phase 7: Nutrition lite (needs Phase 6 profile)
+
+Opt-in switch, estimated targets, and neutral wording (S)
+Daily calories and protein log, search, saved meals (L)
+Barcode scanning (M)
+Photo estimates, much later (L)
+
+Phase 8: Engagement
+
+Weekly goal ring, milestone badges, PR celebrations (M)
+Weekly summary and share cards (M)
+Fitness score, later
+
+Phase 9: Accounts and platform
+
+Login, cloud sync, backup, export (L)
+Lock down the coach function (S, but needs login)
+Standalone builds, reminders and notifications (M)
+
+Phase 10: Portfolio packaging
+
+README, screenshots, demo video, design write-up (S to M). You can do this at any milestone.
+
+Dependencies to keep in mind
+
+The muscle map needs the muscle data from Phase 3.
+Nutrition targets need the profile from Phase 6.
+Sharing the app with anyone, friends or the coach reading health data, needs Phase 9 first.
+
+Natural stopping points
+
+After Phase 4: a strong demo, with a personalised plan, a good workout flow, and the muscle map.
+After Phase 8: a full-featured app on your own phone.
+After Phase 9: safe to share with other people.

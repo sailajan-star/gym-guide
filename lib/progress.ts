@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export type LoggedSet = { exercise: string; set: number; weight: string; reps: string };
+export type LoggedSet = { exercise: string; set: number; weight: string; reps: string; timed?: boolean };
 export type WorkoutLog = { date: string; week: number; workout: string; sets: LoggedSet[] };
 export type Metric = 'top' | 'est';
 export type Kind = 'weight' | 'reps' | 'time';
@@ -39,7 +39,7 @@ export function buildSeries(
   const relevant = logs.filter((l) => l.sets.some((s) => s.exercise === name));
   const allSets = relevant.flatMap((l) => l.sets.filter((s) => s.exercise === name));
 
-  const kind: Kind = TIMED_EXERCISES.includes(name)
+  const kind: Kind = TIMED_EXERCISES.includes(name) || allSets.some((s) => s.timed)
     ? 'time'
     : allSets.some((s) => (parseFloat(s.weight) || 0) > 0)
     ? 'weight'

@@ -32,11 +32,25 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
-      ]
+      ],
+      "@react-native-community/datetimepicker"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "55b57def-d590-4c01-8c1b-9c1ec2c482b9"
+      }
+    },
+    "owner": "sailajan-star",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/55b57def-d590-4c01-8c1b-9c1ec2c482b9"
     }
   }
 }

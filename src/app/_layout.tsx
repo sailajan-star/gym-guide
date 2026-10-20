@@ -34,16 +34,13 @@ function ThemedStack() {
           contentStyle: { backgroundColor: palette.background },
         }}
       >
-        <Stack.Screen name="index" options={{ title: 'Home', headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="onboarding" options={{ title: 'Set up', headerBackTitle: 'Back' }} />
-        <Stack.Screen name="plan" options={{ title: 'Your plan', headerBackTitle: 'Back' }} />
+        <Stack.Screen name="build-plan" options={{ title: 'Build your plan', headerBackTitle: 'Back' }} />
         <Stack.Screen name="workout" options={{ title: 'Workout', headerBackTitle: 'Back' }} />
         <Stack.Screen name="history" options={{ title: 'History', headerBackTitle: 'Back' }} />
-        <Stack.Screen name="coach" options={{ title: 'Coach', headerBackTitle: 'Back' }} />
-        <Stack.Screen name="explore" options={{ title: 'Explore' }} />
-        <Stack.Screen name="progress" options={{ title: 'Progress', headerBackTitle: 'Back' }} />
         <Stack.Screen name="exercise" options={{ title: 'Exercise', headerBackTitle: 'Back' }} />
-        <Stack.Screen name="build-plan" options={{ title: 'Build your plan', headerBackTitle: 'Back' }} />
+        <Stack.Screen name="review" options={{ title: 'Block review', headerBackTitle: 'Back' }} />
       </Stack>
     </ThemeProvider>
   );

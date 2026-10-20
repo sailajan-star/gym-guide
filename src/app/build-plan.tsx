@@ -147,7 +147,7 @@ export default function BuildPlanScreen() {
     };
     await saveCustomPlan(plan);
     await setPlanMode('custom');
-    router.replace('/');
+    router.dismissTo('/');
   }
 
   return (

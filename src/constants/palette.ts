@@ -18,11 +18,11 @@ export type Palette = {
 };
 
 export const darkPalette: Palette = {
-  background: '#0B0D10',
+  background: '#090909',
   surface: '#14181D',
   surfaceAlt: '#1B2027',
   coachGradient: ['#6B1E1E', '#2A1010', '#0B0D10'],
-  border: '#262C35',
+  border: '#262c3500',
   text: '#F3F5F7',
   cardText: '#F3F5F7',
   muted: '#8A94A3',
