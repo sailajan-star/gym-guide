@@ -1,7 +1,7 @@
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-
+import IntroOverlay from '@/components/IntroOverlay';
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import { AppThemeProvider, useTheme } from '@/constants/app-theme';
 
@@ -25,7 +25,7 @@ function ThemedStack() {
   return (
     <ThemeProvider value={navTheme}>
       <StatusBar style={mode === 'dark' ? 'light' : 'dark'} />
-      <AnimatedSplashOverlay />
+      <IntroOverlay/>
       <Stack
         screenOptions={{
           headerStyle: { backgroundColor: palette.background },

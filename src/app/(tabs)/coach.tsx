@@ -355,14 +355,27 @@ export default function CoachScreen() {
             onPress={() => send('Talk me through my next workout')}
             style={{
               marginTop: 14,
-              alignSelf: 'flex-start',
-              backgroundColor: palette.accent,
+              alignSelf: 'center',
               borderRadius: 14,
               paddingVertical: 10,
               paddingHorizontal: 16,
             }}
           >
-            <Text style={{ color: palette.accentText, fontWeight: '800' }}>Talk me through it</Text>
+             <BlurView
+              intensity={60}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                borderRadius: 32,
+                overflow: 'hidden',
+              }}
+            />
+              
+              <Ionicons name="arrow-forward" size={20} color={palette.text} />
+
           </Pressable>
         </LinearGradient>
       ) : null}
@@ -375,7 +388,6 @@ export default function CoachScreen() {
             onPress={() => send(idea.prompt)}
             style={{
               width: '48.5%',
-              backgroundColor: palette.surface,
               borderRadius: 22,
               borderWidth: 0,
               borderColor: palette.border,
@@ -384,6 +396,18 @@ export default function CoachScreen() {
               minHeight: 118,
             }}
           >
+          <BlurView
+            intensity={60}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              borderRadius: 32,
+              overflow: 'hidden',
+            }}
+          />
             <View
               style={{
                 width: 38,
@@ -414,11 +438,23 @@ export default function CoachScreen() {
               paddingHorizontal: 14,
               borderRadius: 18,
               marginRight: 8,
-              borderWidth: 1,
+              borderWidth: 0,
               borderColor: palette.border,
-              backgroundColor: palette.surface,
             }}
           >
+
+           <BlurView
+            intensity={60}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              borderRadius: 32,
+              overflow: 'hidden',
+            }}
+          />
             <Text style={{ color: palette.text, fontWeight: '600' }}>{q}</Text>
           </Pressable>
         ))}
@@ -430,13 +466,25 @@ export default function CoachScreen() {
           <Text style={{ ...label, marginBottom: 10 }}>RECENT</Text>
           <View
             style={{
-              backgroundColor: palette.surface,
               borderRadius: 22,
-              borderWidth: 1,
+              borderWidth: 0,
               borderColor: palette.border,
               overflow: 'hidden',
             }}
           >
+          
+           <BlurView
+              intensity={60}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                borderRadius: 32,
+                overflow: 'hidden',
+              }}
+            />
             {recent.map((r, i) => (
               <Pressable
                 key={r}
@@ -478,6 +526,7 @@ export default function CoachScreen() {
         glow={glowTop}
       />
 
+
       {/* Soft fade so content doesn't collide with the status bar */}
       <LinearGradient
           pointerEvents="none"
@@ -500,7 +549,7 @@ export default function CoachScreen() {
               paddingHorizontal: 12,
               borderRadius: 16,
               backgroundColor: palette.surface,
-              borderWidth: 1,
+              borderWidth: 0,
               borderColor: palette.border,
             }}
           >
@@ -638,11 +687,11 @@ export default function CoachScreen() {
         }
       />
 
+      
       {/* Floating glass input */}
       <View style={{ paddingHorizontal: 16, paddingTop: 6, paddingBottom: kbOpen ? 8 : offset - 15 + TAB_BAR_HEIGHT + 10 }}>
         <BlurView
           intensity={40}
-          tint={mode === 'dark' ? 'dark' : 'light'}
           style={{ borderRadius: 28, overflow: 'hidden', borderWidth: 1, borderColor: palette.border }}
         >
           <View

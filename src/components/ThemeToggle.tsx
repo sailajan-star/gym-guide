@@ -14,7 +14,7 @@ export default function ThemeToggle() {
         backgroundColor: palette.surface,
         //borderWidth: 1,
         //borderColor: palette.border,
-        shadowColor: '#6B6570',
+        shadowColor: '#242126',
         shadowOpacity: 0.45,
         shadowRadius: 16,
         shadowOffset: { width: 0, height: 4 },
